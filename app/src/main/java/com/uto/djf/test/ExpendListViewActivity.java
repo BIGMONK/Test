@@ -3,6 +3,7 @@ package com.uto.djf.test;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,11 @@ public class ExpendListViewActivity extends BaseActivity {
                 } else {
                     groupViewHolder = (GroupViewHolder) convertView.getTag();
                 }
+                if (isExpanded){
+                    groupViewHolder.imageViewArrow.setImageResource(R.drawable.arrow_down);
+                }else{
+                    groupViewHolder.imageViewArrow.setImageResource(R.drawable.arrow_right);
+                }
                 groupViewHolder.imageView.setImageResource(R.mipmap.ic_launcher);
                 groupViewHolder.textView.setText(getGroup(groupPosition).toString());
                 return convertView;
@@ -109,7 +115,7 @@ public class ExpendListViewActivity extends BaseActivity {
                     childViewHolder = (ChildViewHolder) convertView.getTag();
                 }
                 childViewHolder.imageView.setImageResource(R.mipmap.ic_launcher);
-                childViewHolder.textView.setText(getChild(groupPosition,childPosition).toString());
+                childViewHolder.textView.setText(getChild(groupPosition, childPosition).toString());
                 return convertView;
             }
 
@@ -117,19 +123,29 @@ public class ExpendListViewActivity extends BaseActivity {
             public boolean isChildSelectable(int groupPosition, int childPosition) {
                 return true;
             }
+
         };
 
         elv.setAdapter(adapter);
+        //去掉左边的箭头
+        elv.setGroupIndicator(null);
+        //展开所有group
+//        int groupCount = elv.getCount();
+//        for (int i=0; i<groupCount; i++) {
+//            elv.expandGroup(i);
+//        };
 
 
     }
 
     class GroupViewHolder {
         ImageView imageView;
+        ImageView imageViewArrow;
         TextView textView;
 
         public GroupViewHolder(View view) {
             imageView = (ImageView) view.findViewById(R.id.iv_group_item);
+            imageViewArrow = (ImageView) view.findViewById(R.id.iv_arrow);
             textView = (TextView) view.findViewById(R.id.tv_group_item);
         }
     }
@@ -161,6 +177,18 @@ public class ExpendListViewActivity extends BaseActivity {
 
                 ToastUtils.SimpleToast(ExpendListViewActivity.this, "你点击了" + adapter.getGroup(groupPosition));
                 return false;
+            }
+        });
+
+        //打开一个关闭其他的
+        elv.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                for (int i = 0; i < elv.getCount(); i++) {
+                    if (groupPosition != i) {
+                        elv.collapseGroup(i);
+                    }
+                }
             }
         });
     }
