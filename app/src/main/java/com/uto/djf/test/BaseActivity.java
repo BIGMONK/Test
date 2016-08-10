@@ -80,21 +80,21 @@ public abstract class BaseActivity extends AutoLayoutActivity {
     /**
      * 返回当前Activity使用的布局id
      */
-    abstract int getLayoutId();
+    protected abstract int getLayoutId();
 
     /**
      * 执行findViewById操作
      */
-    abstract void initView();
+    protected abstract void initView();
 
     /**
      * 注册监听器、适配器
      */
-    abstract void initListener();
+    protected abstract void initListener();
 
     /**
      * 获取数据，初始化界面
      */
-    abstract void initData();
+    protected abstract void initData();
 
 }

@@ -26,6 +26,18 @@
                 android:layout_height="wrap_content"
                 android:text="ExpendListView" />
 
+            <Button
+                android:id="@+id/btn_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycler" />
+
+            <Button
+                android:id="@+id/btn_image_identify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image Identify" />
+
 
         </LinearLayout>
     </ScrollView>

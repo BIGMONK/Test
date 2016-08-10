@@ -1,25 +1,18 @@
 package com.uto.djf.test;
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.uto.djf.test.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class ExpendListViewActivity extends BaseActivity {
+public class ExpandableListViewActivity extends BaseActivity {
 
 
     @BindView(R.id.elv)
@@ -39,12 +32,12 @@ public class ExpendListViewActivity extends BaseActivity {
     private ExpandableListAdapter adapter;
 
     @Override
-    int getLayoutId() {
-        return R.layout.activity_expendlistview;
+    protected int getLayoutId() {
+        return R.layout.activity_expandablelistview;
     }
 
     @Override
-    void initView() {
+    protected void initView() {
 
         adapter = new BaseExpandableListAdapter() {
             @Override
@@ -87,7 +80,7 @@ public class ExpendListViewActivity extends BaseActivity {
 
                 GroupViewHolder groupViewHolder;
                 if (convertView == null) {
-                    convertView = View.inflate(getApplicationContext(), R.layout.item_group_expendlistview, null);
+                    convertView = View.inflate(getApplicationContext(), R.layout.item_group_expandablelistview, null);
                     groupViewHolder = new GroupViewHolder(convertView);
                     convertView.setTag(groupViewHolder);
                 } else {
@@ -108,7 +101,7 @@ public class ExpendListViewActivity extends BaseActivity {
 
                 ChildViewHolder childViewHolder;
                 if (convertView == null) {
-                    convertView = View.inflate(getApplicationContext(), R.layout.item_child_expendlistview, null);
+                    convertView = View.inflate(getApplicationContext(), R.layout.item_child_expandablelistview, null);
                     childViewHolder = new ChildViewHolder(convertView);
                     convertView.setTag(childViewHolder);
                 } else {
@@ -162,12 +155,12 @@ public class ExpendListViewActivity extends BaseActivity {
 
 
     @Override
-    void initListener() {
+    protected void initListener() {
         elv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
-                ToastUtils.SimpleToast(ExpendListViewActivity.this, "你点击了" + adapter.getChild(groupPosition, childPosition));
+                ToastUtils.SimpleToast(ExpandableListViewActivity.this, "你点击了" + adapter.getChild(groupPosition, childPosition));
                 return false;
             }
         });
@@ -175,7 +168,7 @@ public class ExpendListViewActivity extends BaseActivity {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
-                ToastUtils.SimpleToast(ExpendListViewActivity.this, "你点击了" + adapter.getGroup(groupPosition));
+                ToastUtils.SimpleToast(ExpandableListViewActivity.this, "你点击了" + adapter.getGroup(groupPosition));
                 return false;
             }
         });
@@ -194,7 +187,7 @@ public class ExpendListViewActivity extends BaseActivity {
     }
 
     @Override
-    void initData() {
+    protected void initData() {
 
     }
 

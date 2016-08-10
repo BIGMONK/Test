@@ -1,4 +1,4 @@
-package com.uto.djf.test;
+package com.uto.djf.test.screenmesure;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.uto.djf.test.BaseActivity;
+import com.uto.djf.test.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,22 +21,22 @@ public class ScreenMesureActivity extends BaseActivity {
     TextView tvScreenWidthAndHeigh2;
 
     @Override
-    int getLayoutId() {
+    protected int getLayoutId() {
         return R.layout.activity_screen_mesure;
     }
 
     @Override
-    void initView() {
+    protected void initView() {
 
     }
 
     @Override
-    void initListener() {
+    protected void initListener() {
 
     }
 
     @Override
-    void initData() {
+    protected void initData() {
         //方法一
         WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();

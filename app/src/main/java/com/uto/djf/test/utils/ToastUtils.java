@@ -1,4 +1,4 @@
-package com.uto.djf.test;
+package com.uto.djf.test.utils;
 
 import android.content.Context;
 import android.widget.Toast;
