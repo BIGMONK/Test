@@ -1,8 +1,8 @@
 package com.uto.djf.test.utils;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.uto.djf.test.bean.RoadLineBean;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -73,10 +73,10 @@ public class JsonTool {
      * @param
      * @return
      */
-    public static <T> List<T> getObjects(String jsonString, TypeToken<List<T>> typetoken) {
+    public static <T> List<T> getObjects(String jsonString,Class<T> cls) {
         List<T> list = new ArrayList<T>();
         try {
-            list = gson.fromJson(jsonString, typetoken.getType());
+            list = gson.fromJson(jsonString, new TypeToken<List<T>>(){}.getType());
         } catch (Exception e) {
         }
         return list;

@@ -45,8 +45,8 @@ public class MainActivity extends BaseActivity {
         tv.setText(FileUtils.getSdCardPath());
 
         File file = new File(FileUtils.getSdCardPath() + "/vr/MultiPersonModel.json");
-        JsonTool.getObjects(FileUtils.getStringFromJsonFile(file),
-                new TypeToken<List<RoadLineBean>>(){}.getType());
+//        JsonTool.getObject()
+        List<RoadLineBean> objects = JsonTool.getObjects(FileUtils.getStringFromJsonFile(file), RoadLineBean.class);
 
 
     }
