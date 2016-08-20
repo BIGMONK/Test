@@ -55,17 +55,30 @@ public class ImageIdentifyActivity extends AppCompatActivity implements OnTaskCo
         progressDialog.setMessage("正在获取识别结果");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-        progressDialog.show();
+        if (progressDialog != null && !progressDialog.isShowing())
+            progressDialog.show();
 
         Onyx.with(this).fromURL(url).getTagsandProbability(this);
     }
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 100:
+                    if (progressDialog != null && !progressDialog.isShowing())
+                        progressDialog.show();
+                    break;
+            }
+        }
+    };
 
     @OnClick(R.id.imageView)
     public void onClick() {
 
         tvResult.setText("正在获取结果");
-        progressDialog.show();
+        handler.sendEmptyMessage(100);
         index = new Random().nextInt(Math.round(urls.length));
         System.out.println("请求识别" + index);
 
@@ -84,7 +97,8 @@ public class ImageIdentifyActivity extends AppCompatActivity implements OnTaskCo
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                progressDialog.dismiss();
+                if (progressDialog != null && progressDialog.isShowing())
+                    progressDialog.dismiss();
             }
         });
 
@@ -93,8 +107,13 @@ public class ImageIdentifyActivity extends AppCompatActivity implements OnTaskCo
             sb.append(s);
         }
         System.out.println("返回结果:" + response.toString());
-        ToastUtils.SimpleToast(ImageIdentifyActivity.this, sb.toString());
+//        ToastUtils.SimpleToast(ImageIdentifyActivity.this, sb.toString());
         tvResult.setText(response.toString());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        progressDialog.dismiss();
+    }
 }

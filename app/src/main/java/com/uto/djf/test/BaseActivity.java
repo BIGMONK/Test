@@ -2,6 +2,7 @@ package com.uto.djf.test;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,6 +31,7 @@ public abstract class BaseActivity extends AutoLayoutActivity {
         initListener();
         initData();
         regCommonBtn();
+
 
 
     }

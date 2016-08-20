@@ -4,9 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.gson.reflect.TypeToken;
+import com.uto.djf.test.bean.RoadLineBean;
 import com.uto.djf.test.recyclerview.RecyclerViewActivity;
 import com.uto.djf.test.screenmesure.ScreenMesureActivity;
+import com.uto.djf.test.utils.FileUtils;
+import com.uto.djf.test.utils.JsonTool;
+
+import java.io.File;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +31,8 @@ public class MainActivity extends BaseActivity {
     Button btnRecycler;
     @BindView(R.id.btn_image_identify)
     Button btnImageIdentify;
+    @BindView(R.id.tv)
+    TextView tv;
 
 
     @Override
@@ -32,6 +42,12 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        tv.setText(FileUtils.getSdCardPath());
+
+        File file = new File(FileUtils.getSdCardPath() + "/vr/MultiPersonModel.json");
+        JsonTool.getObjects(FileUtils.getStringFromJsonFile(file),
+                new TypeToken<List<RoadLineBean>>(){}.getType());
+
 
     }
 
