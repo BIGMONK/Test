@@ -25,8 +25,6 @@ import android.util.Log;
 
 /**
  * 异步下载任务params共有三个参数：远程文件url、远程文件url、本地下载目录、存储文件名
- *
- *
  */
 public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
 
@@ -45,7 +43,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
     protected Boolean doInBackground(String... params) {
         filepath = Environment.getExternalStorageDirectory() + "";
         fullPath = params[1] + params[2];
-        unzipfilepath=params[3];
+        unzipfilepath = params[3];
         try {
             URL url = new URL(params[0]);
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
@@ -61,7 +59,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
                 File apkFile = new File(path, params[2]);
                 if (!apkFile.exists()) {
                     apkFile.createNewFile();
-                }else{
+                } else {
                     apkFile.delete();
                     apkFile.createNewFile();
                 }
@@ -99,15 +97,15 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
         perDialog.dismiss();
         if (result) {
             Log.v("---下载-->", "下载完成");
-			try {
-				unZipFile(fullPath, unzipfilepath);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (ZipException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+            try {
+                unZipFile(fullPath, unzipfilepath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (ZipException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             Log.v("---下载-->", "下载失败");
         }
@@ -141,6 +139,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
      */
     private void unZipFile(String archive, String decompressDir)
             throws IOException, FileNotFoundException, ZipException {
+        this.unzipFileListener.onUnzipFileListener(false);
         BufferedInputStream bi;
         ZipFile zf = new ZipFile(archive, "UTF-8");
         File file = new File(archive);
@@ -149,7 +148,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
             ZipEntry ze2 = (ZipEntry) e.nextElement();
             String entryName = ze2.getName();
             String path = decompressDir + "/" + entryName;
-            System.out.println("path= "+path);
+            System.out.println("path= " + path);
             if (ze2.isDirectory()) {
                 System.out.println("正在创建解压目录 - " + entryName);
                 File decompressDirFile = new File(path);
@@ -176,6 +175,16 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
             }
         }
         zf.close();
-        for (int i = 0; !file.delete() && i <= 20; i++);
+        this.unzipFileListener.onUnzipFileListener(true);
+        for (int i = 0; !file.delete() && i <= 20; i++) ;
+    }
+
+    public void  setOnUnzipFileListener(UnzipFileListener listener){
+        unzipFileListener=listener;
+    }
+    private UnzipFileListener unzipFileListener;
+
+    public interface UnzipFileListener {
+        public void onUnzipFileListener(boolean isOver);
     }
 }

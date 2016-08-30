@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.widget.TextView;
 
 import com.uto.djf.test.utils.DownloadAsyncTask;
+import com.uto.djf.test.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +32,20 @@ public class NetworkActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        new DownloadAsyncTask(this).execute(params);
+
+        DownloadAsyncTask downloadAsyncTask = new DownloadAsyncTask(this);
+        downloadAsyncTask.setOnUnzipFileListener(new DownloadAsyncTask.UnzipFileListener() {
+            @Override
+            public void onUnzipFileListener(boolean isOver) {
+                if (isOver){
+                    ToastUtils.SimpleToast(NetworkActivity.this,"解压完成");
+                }else{
+                    ToastUtils.SimpleToast(NetworkActivity.this,"正在解压");
+                }
+            }
+        });
+        downloadAsyncTask.execute(params);
+
     }
 
     @Override
