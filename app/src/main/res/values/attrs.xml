@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundCornerImageView">
+        <attr name="Round" format="reference|integer"></attr>
+    </declare-styleable>
+    <declare-styleable name="MiniMapView">
+        <attr name="view_width" format="dimension"></attr>
+        <attr name="view_height" format="dimension"></attr>
+    </declare-styleable>
+
+</resources>

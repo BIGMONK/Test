@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -14,15 +15,14 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="design_width"
-            android:value="768" />
+            android:value="1080" />
         <meta-data
             android:name="design_height"
-            android:value="1280" />
+            android:value="1920" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,7 +32,16 @@
             android:label="@string/title_activity_expend_list_view"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".recyclerview.RecyclerViewActivity" />
-        <activity android:name=".ImageIdentifyActivity"></activity>
+        <activity android:name=".ImageIdentifyActivity" />
+        <activity android:name=".DrawLineActivity" />
+        <activity android:name=".CircleImageViewActivity" />
+        <activity android:name=".NetworkActivity"></activity>
+
+        <!--<receiver android:name=".BroadcaseReceiver.BootRestartReceiver">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
     </application>
 
 </manifest>
