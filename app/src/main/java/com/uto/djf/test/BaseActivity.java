@@ -2,12 +2,10 @@ package com.uto.djf.test;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.zhy.autolayout.AutoLayoutActivity;
 
@@ -98,5 +96,14 @@ public abstract class BaseActivity extends AutoLayoutActivity {
      * 获取数据，初始化界面
      */
     protected abstract void initData();
+    private Toast toast;
+    public void SimpleToast(String string) {
+        if (toast == null) {
+            toast = Toast.makeText(this, string, Toast.LENGTH_SHORT);
+        } else {
+            toast.setText(string);
+        }
+        toast.show();
+    }
 
 }

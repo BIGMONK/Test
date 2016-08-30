@@ -1,5 +1,16 @@
 package com.uto.djf.test.utils;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import org.apache.tools.zip.ZipEntry;
+import org.apache.tools.zip.ZipFile;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -12,16 +23,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.zip.ZipException;
-
-
-import org.apache.tools.zip.ZipEntry;
-import org.apache.tools.zip.ZipFile;
-
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Environment;
-import android.util.Log;
 
 /**
  * 异步下载任务params共有三个参数：远程文件url、远程文件url、本地下载目录、存储文件名
@@ -95,17 +96,26 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
     protected void onPostExecute(Boolean result) {
         super.onPostExecute(result);
         perDialog.dismiss();
+
         if (result) {
             Log.v("---下载-->", "下载完成");
-            try {
-                unZipFile(fullPath, unzipfilepath);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (ZipException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            this.unzipFileListener.onUnzipFileListener(false);
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+                        try {
+                            unZipFile(fullPath, unzipfilepath);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (ZipException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    }
+                }.start();
+
         } else {
             Log.v("---下载-->", "下载失败");
         }
@@ -127,7 +137,13 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
         perDialog.setProgress(values[0]);
         Log.v("---下载进度---->", values[0] + "");
     }
-
+    Handler  handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            DownloadAsyncTask.this.unzipFileListener.onUnzipFileListener(true);
+        }
+    };
     /**
      * 解压文件
      *
@@ -139,7 +155,9 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
      */
     private void unZipFile(String archive, String decompressDir)
             throws IOException, FileNotFoundException, ZipException {
-        this.unzipFileListener.onUnzipFileListener(false);
+
+        System.out.println("开始解压");
+
         BufferedInputStream bi;
         ZipFile zf = new ZipFile(archive, "UTF-8");
         File file = new File(archive);
@@ -175,8 +193,10 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
             }
         }
         zf.close();
-        this.unzipFileListener.onUnzipFileListener(true);
+        System.out.println("结束解压");
         for (int i = 0; !file.delete() && i <= 20; i++) ;
+
+      handler.sendEmptyMessage(1);
     }
 
     public void  setOnUnzipFileListener(UnzipFileListener listener){

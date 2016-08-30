@@ -12,11 +12,15 @@ import android.widget.Toast;
 public class ToastUtils {
     private static Toast toast;
 
-    public static void SimpleToast(Context context,String string){
-        if (toast==null){
-            toast=Toast.makeText(context, string,Toast.LENGTH_SHORT);
-        }else{
-            toast.setText(string);
+    public static void SimpleToast(Context context, String string) {
+        if (toast == null) {
+            synchronized (ToastUtils.class) {
+                if (toast == null) {
+                    toast = Toast.makeText(context, string, Toast.LENGTH_SHORT);
+                } else {
+                    toast.setText(string);
+                }
+            }
         }
         toast.show();
     }

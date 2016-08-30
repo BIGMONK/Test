@@ -9,16 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.uto.djf.test.bean.RoadLineBean;
 import com.uto.djf.test.recyclerview.RecyclerViewActivity;
 import com.uto.djf.test.screenmesure.ScreenMesureActivity;
-import com.uto.djf.test.utils.FileUtils;
-import com.uto.djf.test.utils.JsonTool;
-
-import java.io.File;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -67,10 +59,10 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
 
         // tv.setText(FileUtils.getSdCardPath());
-        File file = new File(FileUtils.getSdCardPath() +File.separator+"vr"+File.separator+"MultiPersonModel.json");
-        Gson  gson=new  Gson();
-        List<RoadLineBean> objects= JsonTool.getObjects(FileUtils.getStringFromJsonFile(file), new TypeToken<List<RoadLineBean>>() {}.getType());
-        textview.setText(objects.get(0).getPageHeader().getName());
+//        File file = new File(FileUtils.getSdCardPath() +File.separator+"vr"+File.separator+"MultiPersonModel.json");
+//        Gson  gson=new  Gson();
+//        List<RoadLineBean> objects= JsonTool.getObjects(FileUtils.getStringFromJsonFile(file), new TypeToken<List<RoadLineBean>>() {}.getType());
+//        textview.setText(objects.get(0).getPageHeader().getName());
 
 
 
