@@ -72,10 +72,12 @@ public class JsonTool {
      * @param  type// new TypeToken<List<T>>() {}.getType()
      * @return
      */
+
     public static <T> List<T> getObjects(String jsonString,Type type) {
         List<T> list = new ArrayList<T>();
         try {
             list = gson.fromJson(jsonString, type);
+
         } catch (Exception e) {
         }
         return list;

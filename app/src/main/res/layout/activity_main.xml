@@ -15,6 +15,36 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btn_download_asynctask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="异步下载" />
+
+            <Button
+                android:id="@+id/btn_circle_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="圆角ImageView" />
+
+            <Button
+                android:id="@+id/btn_draw_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="画线" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入内容：" />
+
+            <Button
+                android:id="@+id/hide_keyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="隐藏键盘" />
+
+            <Button
                 android:id="@+id/btn_get_screen_parameter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,10 +67,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Image Identify" />
+
             <TextView
-                android:id="@+id/tv"
+                android:id="@+id/textview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="30px" />
+
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30px" />
+
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30px" />
+
+            <TextView
+                android:id="@+id/textview4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30px" />
 
 
         </LinearLayout>
