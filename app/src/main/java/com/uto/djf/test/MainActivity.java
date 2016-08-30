@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.uto.djf.test.bean.RoadLineBean;
 import com.uto.djf.test.recyclerview.RecyclerViewActivity;
@@ -42,13 +42,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        tv.setText(FileUtils.getSdCardPath());
-
-        File file = new File(FileUtils.getSdCardPath() + "/vr/MultiPersonModel.json");
-//        JsonTool.getObject()
-        List<RoadLineBean> objects = JsonTool.getObjects(FileUtils.getStringFromJsonFile(file), RoadLineBean.class);
-
-
+        // tv.setText(FileUtils.getSdCardPath());
+        File file = new File(FileUtils.getSdCardPath() +File.separator+"vr"+File.separator+"MultiPersonModel.json");
+        Gson  gson=new  Gson();
+        List<RoadLineBean> objects= JsonTool.getObjects(FileUtils.getStringFromJsonFile(file), new TypeToken<List<RoadLineBean>>() {}.getType());
+        tv.setText(objects.get(0).getPageHeader().getName());
     }
 
     @Override
