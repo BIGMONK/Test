@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity {
                 gotoActivity(NetworkActivity.class);
                 break;
             case R.id.btn_circle_imageview:
-                gotoActivity(CircleImageViewActivity.class);
+                gotoActivity(CustomViewActivity.class);
                 break;
             case R.id.btn_draw_line:
                 gotoActivity(DrawLineActivity.class);

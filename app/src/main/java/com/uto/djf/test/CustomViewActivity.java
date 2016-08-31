@@ -4,17 +4,20 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import com.uto.djf.test.view.MiniMapView;
+import com.uto.djf.test.view.RoundProgressBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CircleImageViewActivity extends BaseActivity {
+public class CustomViewActivity extends BaseActivity {
 
 
     @BindView(R.id.activity_circle_image_view)
     LinearLayout activityCircleImageView;
     @BindView(R.id.minimapview)
     MiniMapView minimapview;
+    @BindView(R.id.roundpeogressbar)
+    RoundProgressBar roundpeogressbar;
 
     @Override
     protected int getLayoutId() {
@@ -24,6 +27,7 @@ public class CircleImageViewActivity extends BaseActivity {
     @Override
     protected void initView() {
         minimapview.loadObjFile("minimap/multi_person_minimap_cuanzang.obj");
+
     }
 
     @Override
@@ -34,12 +38,5 @@ public class CircleImageViewActivity extends BaseActivity {
     @Override
     protected void initData() {
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }

@@ -36,7 +36,7 @@
         <activity android:name=".recyclerview.RecyclerViewActivity" />
         <activity android:name=".ImageIdentifyActivity" />
         <activity android:name=".DrawLineActivity" />
-        <activity android:name=".CircleImageViewActivity" />
+        <activity android:name=".CustomViewActivity" />
         <activity android:name=".NetworkActivity"></activity>
 
         <!--<receiver android:name=".BroadcaseReceiver.BootRestartReceiver">-->
