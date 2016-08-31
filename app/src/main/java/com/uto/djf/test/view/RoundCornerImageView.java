@@ -26,7 +26,7 @@ public class RoundCornerImageView extends ImageView {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs,
                 R.styleable.RoundCornerImageView);
-        round = typedArray.getInt(0, 0);
+        round = typedArray.getInt(R.styleable.RoundCornerImageView_Round, 0);
     }
 
     public RoundCornerImageView(Context context, AttributeSet attrs,

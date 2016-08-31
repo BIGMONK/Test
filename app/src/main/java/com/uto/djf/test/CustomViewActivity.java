@@ -1,13 +1,11 @@
 package com.uto.djf.test;
 
-import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import com.uto.djf.test.view.MiniMapView;
 import com.uto.djf.test.view.RoundProgressBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class CustomViewActivity extends BaseActivity {
 
@@ -27,7 +25,9 @@ public class CustomViewActivity extends BaseActivity {
     @Override
     protected void initView() {
         minimapview.loadObjFile("minimap/multi_person_minimap_cuanzang.obj");
-
+        roundpeogressbar.setMax(10);
+        roundpeogressbar.setProgress(3);
+        roundpeogressbar.setText("1234567");
     }
 
     @Override

@@ -5,8 +5,10 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -23,41 +25,36 @@ import com.uto.djf.test.R;
  * @author xiaanming
  */
 public class RoundProgressBar extends View {
+    public static final int STROKE = 0;
+    public static final int FILL = 1;
     /**
      * 画笔对象的引用
      */
     private Paint paint;
-
     /**
      * 圆环的颜色
      */
     private int roundColor;
-
     /**
      * 圆环进度的颜色
      */
     private int roundProgressColor;
-
     /**
      * 中间进度百分比的字符串的颜色
      */
     private int textColor;
-
     /**
      * 中间进度百分比的字符串的字体
      */
     private float textSize;
-
     /**
      * 圆环的宽度
      */
     private float roundWidth;
-
     /**
      * 最大进度
      */
     private int max;
-
     /**
      * 当前进度
      */
@@ -66,14 +63,13 @@ public class RoundProgressBar extends View {
      * 是否显示中间的进度
      */
     private boolean textIsDisplayable;
-
     /**
      * 进度的风格，实心或者空心
      */
     private int style;
-
-    public static final int STROKE = 0;
-    public static final int FILL = 1;
+    private String text;
+    private Rect mBound;
+    private Paint textPaint;
 
     public RoundProgressBar(Context context) {
         this(context, null);
@@ -95,13 +91,18 @@ public class RoundProgressBar extends View {
         //获取自定义属性和默认值
         roundColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundColor, Color.RED);
         roundProgressColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundProgressColor, Color.GREEN);
+        text = mTypedArray.getString(R.styleable.RoundProgressBar_text);
+        if (TextUtils.isEmpty(text)) {
+            text = "";
+        }
+        ;
         textColor = mTypedArray.getColor(R.styleable.RoundProgressBar_textColor, Color.GREEN);
         textSize = mTypedArray.getDimension(R.styleable.RoundProgressBar_textSize, 15);
         roundWidth = mTypedArray.getDimension(R.styleable.RoundProgressBar_roundWidth, 5);
         max = mTypedArray.getInteger(R.styleable.RoundProgressBar_max, 100);
         textIsDisplayable = mTypedArray.getBoolean(R.styleable.RoundProgressBar_textIsDisplayable, true);
         style = mTypedArray.getInt(R.styleable.RoundProgressBar_style, 0);
-
+        mBound = new Rect();
         mTypedArray.recycle();
     }
 
@@ -130,13 +131,12 @@ public class RoundProgressBar extends View {
         paint.setColor(textColor);
         paint.setTextSize(textSize);
         paint.setTypeface(Typeface.DEFAULT_BOLD); //设置字体
-        int percent = (int) (((float) progress / (float) max) * 100);  //中间的进度百分比，先转换成float在进行除法运算，不然都为0
-        float textWidth = paint.measureText(percent + "%");   //测量字体宽度，我们需要根据字体的宽度设置在圆环中间
-
-        if (textIsDisplayable && percent != 0 && style == STROKE) {
-            canvas.drawText(percent + "%", centre - textWidth / 2, centre + textSize / 2, paint); //画出进度百分比
-        }
-
+//        int percent = (int) (((float) progress / (float) max) * 100);  //中间的进度百分比，先转换成float在进行除法运算，不然都为0
+//        float textWidth = paint.measureText(percent + "%");   //测量字体宽度，我们需要根据字体的宽度设置在圆环中间
+//
+//        if (textIsDisplayable && percent != 0 && style == STROKE) {
+//            canvas.drawText(percent + "%", centre - textWidth / 2, centre + textSize / 2, paint); //画出进度百分比
+//        }
 
         /**
          * 画圆弧 ，画圆环的进度
@@ -151,19 +151,37 @@ public class RoundProgressBar extends View {
         switch (style) {
             case STROKE: {
                 paint.setStyle(Paint.Style.STROKE);
-                canvas.drawArc(oval, 0, 360 * progress / max, false, paint);  //根据进度画圆弧
+                canvas.drawArc(oval, -90, 360 * progress / max, false, paint);  //根据进度画圆弧
                 break;
             }
             case FILL: {
                 paint.setStyle(Paint.Style.FILL_AND_STROKE);
                 if (progress != 0)
-                    canvas.drawArc(oval, 0, 360 * progress / max, true, paint);  //根据进度画圆弧
+                    canvas.drawArc(oval, -90, 360 * progress / max, true, paint);  //根据进度画圆弧
                 break;
             }
         }
 
+        //画中间文字
+        if (textPaint == null)
+            textPaint = new Paint();
+        textPaint.setColor(textColor);
+        textPaint.setTextSize(textSize);
+        float textWidth = textPaint.measureText(text);
+        canvas.drawText(text, centre - textWidth / 2, centre + textSize / 2, textPaint);
+
+//        paint.getTextBounds(text, 0, text.length(), mBound);
+//        canvas.drawText(text, getWidth() / 2 - mBound.width() / 2, getHeight() / 2 + mBound.height() / 2, paint);
     }
 
+
+    public void setText(String text) {
+        this.text = text;
+        //更新文本范围
+//        textPaint.getTextBounds(text, 0, text.length(), mBound);
+        // 通知系统 ，刷新页面，会导致 onDraw 方法的执行
+        invalidate();
+    }
 
     public synchronized int getMax() {
         return max;
