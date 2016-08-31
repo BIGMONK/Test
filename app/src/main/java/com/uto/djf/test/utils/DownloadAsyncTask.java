@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
@@ -82,6 +83,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
                 return true;
             } else {
                 Log.v("---connect-->", "connect failed");
+//                this.downloadListener.onDownloadListener(false);
                 return false;
             }
         } catch (MalformedURLException e) {
@@ -99,13 +101,14 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
 
         if (result) {
             Log.v("---下载-->", "下载完成");
+            this.downloadListener.onDownloadListener(true);
             this.unzipFileListener.onUnzipFileListener(false);
-                new Thread(){
-                    @Override
-                    public void run() {
-                        super.run();
-                        try {
-                            unZipFile(fullPath, unzipfilepath);
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    try {
+                        unZipFile(fullPath, unzipfilepath);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (ZipException e) {
@@ -113,8 +116,8 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    }
-                }.start();
+                }
+            }.start();
 
         } else {
             Log.v("---下载-->", "下载失败");
@@ -137,13 +140,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
         perDialog.setProgress(values[0]);
         Log.v("---下载进度---->", values[0] + "");
     }
-    Handler  handler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            DownloadAsyncTask.this.unzipFileListener.onUnzipFileListener(true);
-        }
-    };
+
     /**
      * 解压文件
      *
@@ -157,7 +154,6 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
             throws IOException, FileNotFoundException, ZipException {
 
         System.out.println("开始解压");
-
         BufferedInputStream bi;
         ZipFile zf = new ZipFile(archive, "UTF-8");
         File file = new File(archive);
@@ -195,16 +191,43 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
         zf.close();
         System.out.println("结束解压");
         for (int i = 0; !file.delete() && i <= 20; i++) ;
-
-      handler.sendEmptyMessage(1);
+        handler.sendEmptyMessage(UNZIP_OVER);
     }
 
-    public void  setOnUnzipFileListener(UnzipFileListener listener){
-        unzipFileListener=listener;
+    public static final int UNZIP_OVER = 100;
+    public static final int CONNECT_FAILED = 200;
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case UNZIP_OVER:
+                    DownloadAsyncTask.this.unzipFileListener.onUnzipFileListener(true);
+                    break;
+                case CONNECT_FAILED:
+                    DownloadAsyncTask.this.downloadListener.onDownloadListener(false);
+
+            }
+        }
+    };
+
+    public void setOnUnzipFileListener(UnzipFileListener listener) {
+        unzipFileListener = listener;
     }
+
     private UnzipFileListener unzipFileListener;
 
     public interface UnzipFileListener {
         public void onUnzipFileListener(boolean isOver);
+    }
+
+    public DownloadListener downloadListener;
+
+    public interface DownloadListener {
+        public void onDownloadListener(boolean succed);
+    }
+
+    public void setOnDownloadListener(DownloadListener listener) {
+        downloadListener = listener;
     }
 }
