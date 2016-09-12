@@ -25,6 +25,7 @@ public class CustomViewActivity extends BaseActivity {
     @Override
     protected void initView() {
         minimapview.loadObjFile("minimap/multi_person_minimap_cuanzang.obj");
+
         roundpeogressbar.setMax(10);
         roundpeogressbar.setProgress(3);
         roundpeogressbar.setText("1234567");

@@ -41,7 +41,6 @@ public class RoundCornerImageView extends ImageView {
         int h = this.getHeight();
 //        clipPath.addRoundRect(new RectF(0, 0, w, h), 100, 100, Path.Direction.CW);
         clipPath.addRoundRect(new RectF(0, 0, w, h), round, round, Path.Direction.CW);
-        System.out.println("LLLLLLLLL" + round);
         canvas.clipPath(clipPath);
         super.onDraw(canvas);
     }

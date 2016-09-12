@@ -20,7 +20,7 @@ public abstract class BaseActivity extends AutoLayoutActivity {
         super.onCreate(savedInstanceState);
 
         //隐藏NavigationBar
-        hideNavigationBar();
+//        hideNavigationBar();
         this.setContentView(getLayoutId());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//去掉信息栏

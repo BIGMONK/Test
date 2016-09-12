@@ -3,20 +3,20 @@ package com.uto.djf.test;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.uto.djf.test.recyclerview.RecyclerViewActivity;
 import com.uto.djf.test.screenmesure.ScreenMesureActivity;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-
-
 
 
 public class MainActivity extends BaseActivity {
@@ -48,6 +48,12 @@ public class MainActivity extends BaseActivity {
     Button btnCircleImageview;
     @BindView(R.id.btn_download_asynctask)
     Button btnDownloadAsynctask;
+    @BindView(R.id.iv_main)
+    ImageView ivMain;
+    @BindView(R.id.iv_main2)
+    ImageView ivMain2;
+    @BindView(R.id.btn_getSDCardPath)
+    Button btnGetSDCardPath;
 
 
     @Override
@@ -57,16 +63,19 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+//背景加载
+//        ivMain.setBackground(Drawable.createFromPath(new File(Environment.getExternalStorageDirectory(),
+//                "/00/1.jpg").getAbsolutePath()));//可以
+//        ivMain.setBackground(Drawable.createFromPath(new File(Environment.getExternalStorageDirectory()+"/00/",
+//                "1.jpg").getAbsolutePath()));//可以
+        //图片加载
+//        Glide.with(this).load(Environment.getExternalStorageDirectory()+"/00/1.jpg").into(ivMain2);//可以
+//        Glide.with(this).load("/mnt/sdcard/00/1.jpg").into(ivMain2);//可以
         // tv.setText(FileUtils.getSdCardPath());
 //        File file = new File(FileUtils.getSdCardPath() +File.separator+"vr"+File.separator+"MultiPersonModel.json");
 //        Gson  gson=new  Gson();
 //        List<RoadLineBean> objects= JsonTool.getObjects(FileUtils.getStringFromJsonFile(file), new TypeToken<List<RoadLineBean>>() {}.getType());
 //        textview.setText(objects.get(0).getPageHeader().getName());
-
-
-
-
 
 
         Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/xiyuan.ttf");
@@ -81,7 +90,6 @@ public class MainActivity extends BaseActivity {
         Typeface fontFace3 = Typeface.createFromAsset(getAssets(), "fonts/youjiyetaikaishu.ttf");
         textview4.setTypeface(fontFace3);
         textview4.setText("由纪叶太楷书");
-
 
 
     }
@@ -99,34 +107,47 @@ public class MainActivity extends BaseActivity {
 
     @OnClick({R.id.btn_get_screen_parameter, R.id.btn_expend_listview,
             R.id.btn_recycler, R.id.btn_image_identify, R.id.hide_keyboard,
-            R.id.btn_draw_line, R.id.btn_circle_imageview, R.id.btn_download_asynctask
+            R.id.btn_draw_line, R.id.btn_circle_imageview, R.id.btn_download_asynctask,
+            R.id.btn_getSDCardPath
+
     })
     public void onClick(View view) {
         switch (view.getId()) {
 
+
+            //获取存储卡路径
+            case R.id.btn_getSDCardPath:
+                gotoActivity(SDCardPathActivity.class);
+                break;
+            //异步下载与解压
             case R.id.btn_download_asynctask:
                 gotoActivity(NetworkActivity.class);
                 break;
+            //圆形imageview
             case R.id.btn_circle_imageview:
                 gotoActivity(CustomViewActivity.class);
                 break;
+            //
             case R.id.btn_draw_line:
                 gotoActivity(DrawLineActivity.class);
                 break;
-
+            //获取屏幕参数
             case R.id.btn_get_screen_parameter:
                 startActivity(new Intent(this, ScreenMesureActivity.class));
                 break;
+            //ExpendableListView
             case R.id.btn_expend_listview:
                 startActivity(new Intent(this, ExpandableListViewActivity.class));
                 break;
-
+            //RecyvlerView
             case R.id.btn_recycler:
                 startActivity(new Intent(this, RecyclerViewActivity.class));
                 break;
+            //图片识别
             case R.id.btn_image_identify:
                 startActivity(new Intent(this, ImageIdentifyActivity.class));
                 break;
+            //隐藏系统键盘
             case R.id.hide_keyboard:
                 ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
                         .hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -140,5 +161,6 @@ public class MainActivity extends BaseActivity {
     private void gotoActivity(Class cal) {
         startActivity(new Intent(this, cal));
     }
+
 
 }

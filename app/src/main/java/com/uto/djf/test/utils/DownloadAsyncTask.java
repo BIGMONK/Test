@@ -108,6 +108,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
                 public void run() {
                     super.run();
                     try {
+                        //解压是耗时操作，要放到子线程里面
                         unZipFile(fullPath, unzipfilepath);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
