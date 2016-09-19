@@ -9,6 +9,9 @@
     <!-- 向SD卡写入数据权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 
     <application
         android:allowBackup="true"
@@ -46,7 +49,9 @@
         <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
         <!-- </intent-filter> -->
         <!-- </receiver> -->
-        <activity android:name=".SDCardPathActivity"></activity>
+        <activity android:name=".SDCardPathActivity" />
+        <activity android:name=".wifiscan.WifiScanActivity" />
+        <activity android:name=".VideoPlayActivity"></activity>
     </application>
 
 </manifest>

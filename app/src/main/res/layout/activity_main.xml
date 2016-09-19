@@ -14,6 +14,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
+            <Button
+                android:id="@+id/btn_video_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="视频播放" />
+            <Button
+                android:id="@+id/btn_wifi_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WIFI扫描" />
+
             <ImageView
                 android:id="@+id/iv_main"
                 android:layout_width="500px"
@@ -30,8 +42,8 @@
             <Button
                 android:id="@+id/btn_getSDCardPath"
                 android:layout_width="wrap_content"
-                android:text="获取存储路径"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="获取存储路径" />
 
             <Button
                 android:id="@+id/btn_download_asynctask"

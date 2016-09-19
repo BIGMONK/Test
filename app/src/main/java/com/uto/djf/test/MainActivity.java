@@ -3,7 +3,6 @@ package com.uto.djf.test;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -13,9 +12,9 @@ import android.widget.TextView;
 
 import com.uto.djf.test.recyclerview.RecyclerViewActivity;
 import com.uto.djf.test.screenmesure.ScreenMesureActivity;
+import com.uto.djf.test.wifiscan.WifiScanActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -54,6 +53,10 @@ public class MainActivity extends BaseActivity {
     ImageView ivMain2;
     @BindView(R.id.btn_getSDCardPath)
     Button btnGetSDCardPath;
+    @BindView(R.id.btn_wifi_scan)
+    Button btnWifiScan;
+    @BindView(R.id.btn_video_play)
+    Button btnVideoPlay;
 
 
     @Override
@@ -77,19 +80,19 @@ public class MainActivity extends BaseActivity {
 //        List<RoadLineBean> objects= JsonTool.getObjects(FileUtils.getStringFromJsonFile(file), new TypeToken<List<RoadLineBean>>() {}.getType());
 //        textview.setText(objects.get(0).getPageHeader().getName());
 
-
-        Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/xiyuan.ttf");
-        textview2.setTypeface(fontFace);
-        textview2.setText("细圆字体");
-
-        Typeface fontFace2 = Typeface.createFromAsset(getAssets(), "fonts/maozedong.ttf");
-        textview3.setTypeface(fontFace2);
-        textview3.setText("毛泽东字体");
-        editText.setTypeface(fontFace2);
-
-        Typeface fontFace3 = Typeface.createFromAsset(getAssets(), "fonts/youjiyetaikaishu.ttf");
-        textview4.setTypeface(fontFace3);
-        textview4.setText("由纪叶太楷书");
+//
+//        Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/xiyuan.ttf");
+//        textview2.setTypeface(fontFace);
+//        textview2.setText("细圆字体");
+//
+//        Typeface fontFace2 = Typeface.createFromAsset(getAssets(), "fonts/maozedong.ttf");
+//        textview3.setTypeface(fontFace2);
+//        textview3.setText("毛泽东字体");
+//        editText.setTypeface(fontFace2);
+//
+//        Typeface fontFace3 = Typeface.createFromAsset(getAssets(), "fonts/youjiyetaikaishu.ttf");
+//        textview4.setTypeface(fontFace3);
+//        textview4.setText("由纪叶太楷书");
 
 
     }
@@ -108,12 +111,21 @@ public class MainActivity extends BaseActivity {
     @OnClick({R.id.btn_get_screen_parameter, R.id.btn_expend_listview,
             R.id.btn_recycler, R.id.btn_image_identify, R.id.hide_keyboard,
             R.id.btn_draw_line, R.id.btn_circle_imageview, R.id.btn_download_asynctask,
-            R.id.btn_getSDCardPath
+            R.id.btn_getSDCardPath, R.id.btn_wifi_scan,R.id.btn_video_play
 
     })
     public void onClick(View view) {
         switch (view.getId()) {
 
+
+            //视频播放
+            case R.id.btn_video_play:
+                gotoActivity(VideoPlayActivity.class);
+                break;
+            //获取wifi列表
+            case R.id.btn_wifi_scan:
+                gotoActivity(WifiScanActivity.class);
+                break;
 
             //获取存储卡路径
             case R.id.btn_getSDCardPath:
@@ -161,6 +173,5 @@ public class MainActivity extends BaseActivity {
     private void gotoActivity(Class cal) {
         startActivity(new Intent(this, cal));
     }
-
 
 }
