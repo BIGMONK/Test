@@ -51,7 +51,18 @@
         <!-- </receiver> -->
         <activity android:name=".SDCardPathActivity" />
         <activity android:name=".wifiscan.WifiScanActivity" />
-        <activity android:name=".VideoPlayActivity"></activity>
+        <activity
+            android:name=".VideoPlayActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".AActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".BActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".CActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

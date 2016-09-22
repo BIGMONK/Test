@@ -57,6 +57,8 @@ public class MainActivity extends BaseActivity {
     Button btnWifiScan;
     @BindView(R.id.btn_video_play)
     Button btnVideoPlay;
+    @BindView(R.id.btn_activity_start)
+    Button btnActivityStart;
 
 
     @Override
@@ -111,17 +113,24 @@ public class MainActivity extends BaseActivity {
     @OnClick({R.id.btn_get_screen_parameter, R.id.btn_expend_listview,
             R.id.btn_recycler, R.id.btn_image_identify, R.id.hide_keyboard,
             R.id.btn_draw_line, R.id.btn_circle_imageview, R.id.btn_download_asynctask,
-            R.id.btn_getSDCardPath, R.id.btn_wifi_scan,R.id.btn_video_play
+            R.id.btn_getSDCardPath, R.id.btn_wifi_scan, R.id.btn_video_play,
+            R.id.btn_activity_start
 
     })
     public void onClick(View view) {
         switch (view.getId()) {
 
 
+            //activity
+            case R.id.btn_activity_start:
+                gotoActivity(AActivity.class);
+                break;
+
             //视频播放
             case R.id.btn_video_play:
                 gotoActivity(VideoPlayActivity.class);
                 break;
+
             //获取wifi列表
             case R.id.btn_wifi_scan:
                 gotoActivity(WifiScanActivity.class);
