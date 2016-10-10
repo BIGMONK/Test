@@ -15,7 +15,7 @@ public class NetworkActivity extends BaseActivity {
     private static final String UNZIP_SAVE_PATH = Environment.getExternalStorageDirectory() + "/01/";
     @BindView(R.id.tv_show)
     TextView tvShow;
-        String url = "http://192.168.3.171:8080/test/test.zip";
+        String url = "http://192.168.1.37:8080/test/test.zip";
 //        String url = "http://172.20.85.1:8080/test/test.zip";
 //    String url = "http://192.168.31.177:80/test/test.zip";
     String[] params = new String[]{url, NATIVE_SAVE_PATH, "dao.zip", UNZIP_SAVE_PATH};

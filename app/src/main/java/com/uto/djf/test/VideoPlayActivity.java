@@ -49,7 +49,7 @@ public class VideoPlayActivity extends BaseActivity {
                 case COPYOVER:
                     progressBar.setVisibility(View.GONE);
                     System.out.println(TAG + "    " + 4);
-                    setVideo(copyDir+File.separator+copyFileName);
+                    setVideo(copyDir + File.separator + copyFileName);
                     break;
             }
         }
@@ -136,8 +136,11 @@ public class VideoPlayActivity extends BaseActivity {
 //        System.out.println("sadfsaddddddd==" + afd.getFileDescriptor());
 
 
-        videoview.setVideoPath(filePath);
-
+//        videoview.setVideoPath(filePath);
+//        videoview.setVideoPath("http://192.168.1.37:8080/km1930/resources/single/1000/playvideo1000.mp4");
+//        videoview.setVideoPath("http://192.168.1.37:8080/km1930/resources/single/9000/playvideo9000.mp4");
+//        videoview.setVideoPath("http://km1930.oss-cn-shanghai.aliyuncs.com/Video/playvideo9000.mp4");
+        videoview.setVideoPath("http://km1930.oss-cn-shanghai.aliyuncs.com/Video/playvideo5000.mp4");
 
         final MediaController mediaController = new MediaController(this);
 
@@ -154,7 +157,7 @@ public class VideoPlayActivity extends BaseActivity {
         videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                videoview.start();
+                videoview.stopPlayback();
             }
         });
     }

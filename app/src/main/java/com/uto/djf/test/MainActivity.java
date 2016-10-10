@@ -114,13 +114,29 @@ public class MainActivity extends BaseActivity {
             R.id.btn_recycler, R.id.btn_image_identify, R.id.hide_keyboard,
             R.id.btn_draw_line, R.id.btn_circle_imageview, R.id.btn_download_asynctask,
             R.id.btn_getSDCardPath, R.id.btn_wifi_scan, R.id.btn_video_play,
-            R.id.btn_activity_start
+            R.id.btn_activity_start, R.id.btn_fori_time_cost_test, R.id.btn_net_resource_test,
+            R.id.btn_thread_pool_test,R.id.btn_ip_get_test
 
     })
     public void onClick(View view) {
         switch (view.getId()) {
 
-
+            //ip获取测试
+            case R.id.btn_ip_get_test:
+                gotoActivity(IPGetActivity.class);
+                break;
+            //线程池测试
+            case R.id.btn_thread_pool_test:
+                gotoActivity(ThreadPoolTestActivity.class);
+                break;
+            //网络资源测试
+            case R.id.btn_net_resource_test:
+                gotoActivity(NetResourceTestActivity.class);
+                break;
+            //耗时遍历测试
+            case R.id.btn_fori_time_cost_test:
+                gotoActivity(ForiTimeTestActivity.class);
+                break;
             //activity
             case R.id.btn_activity_start:
                 gotoActivity(AActivity.class);

@@ -15,6 +15,27 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btn_ip_get_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IP获取" />
+            <Button
+                android:id="@+id/btn_thread_pool_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="线程池测试" />
+            <Button
+                android:id="@+id/btn_net_resource_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="网络资源测试" />
+            <Button
+                android:id="@+id/btn_fori_time_cost_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文件遍历耗时测试" />
+
+            <Button
                 android:id="@+id/btn_activity_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,7 +77,7 @@
                 android:id="@+id/btn_download_asynctask"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="异步下载" />
+                android:text="异步下载解压" />
 
             <Button
                 android:id="@+id/btn_circle_imageview"

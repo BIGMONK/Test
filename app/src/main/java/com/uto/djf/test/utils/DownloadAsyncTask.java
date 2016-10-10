@@ -52,7 +52,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
             huc.setConnectTimeout(10 * 1000);
             huc.connect();
             if (huc.getResponseCode() == 200) {
-                Log.v("---connect-->", "connect succed");
+                Log.v("---connect-->", "connect succed"+params[0]);
                 perDialog.setMax(huc.getContentLength());
                 File path = new File(params[1]);
                 if (!path.exists()) {
@@ -82,7 +82,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
                 is.close();
                 return true;
             } else {
-                Log.v("---connect-->", "connect failed");
+                Log.v("---connect-->", "connect failed"+params[0]);
 //                this.downloadListener.onDownloadListener(false);
                 return false;
             }
@@ -154,7 +154,7 @@ public class DownloadAsyncTask extends AsyncTask<String, Integer, Boolean> {
     private void unZipFile(String archive, String decompressDir)
             throws IOException, FileNotFoundException, ZipException {
 
-        System.out.println("开始解压");
+        System.out.println("开始解压   "+archive+"       "+decompressDir);
         BufferedInputStream bi;
         ZipFile zf = new ZipFile(archive, "UTF-8");
         File file = new File(archive);

@@ -63,6 +63,10 @@
         <activity
             android:name=".CActivity"
             android:launchMode="singleTask" />
+        <activity android:name=".ForiTimeTestActivity" />
+        <activity android:name=".NetResourceTestActivity" />
+        <activity android:name=".ThreadPoolTestActivity" />
+        <activity android:name=".IPGetActivity"></activity>
     </application>
 
 </manifest>

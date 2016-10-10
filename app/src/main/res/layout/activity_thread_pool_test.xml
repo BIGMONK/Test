@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.uto.djf.test.ThreadPoolTestActivity">
+
+    <Button
+        android:id="@+id/btn_CachedThreadPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="可缓存线程池" />
+
+    <Button
+        android:id="@+id/btn_FixedThreadPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定长线程池" />
+
+    <Button
+        android:id="@+id/btn_ScheduledThreadPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="定时和周期线程池" />
+
+    <Button
+        android:id="@+id/btn_SingleThreadExecutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="单线程化的线程池" />
+
+</LinearLayout>
