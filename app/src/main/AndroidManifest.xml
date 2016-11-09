@@ -3,7 +3,7 @@
     package="com.uto.djf.test">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 在SD卡中创建与删除文件权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 
     <application
+        android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,10 +23,10 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="design_width"
-            android:value="1080" />
+            android:value="1920" />
         <meta-data
             android:name="design_height"
-            android:value="1920" />
+            android:value="1080" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -36,38 +37,42 @@
         </activity>
         <activity android:name=".screenmesure.ScreenMesureActivity" />
         <activity
-            android:name=".ExpandableListViewActivity"
+            android:name=".activity.ExpandableListViewActivity"
             android:label="@string/title_activity_expend_list_view"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".recyclerview.RecyclerViewActivity" />
-        <activity android:name=".ImageIdentifyActivity" />
-        <activity android:name=".DrawLineActivity" />
-        <activity android:name=".CustomViewActivity" />
-        <activity android:name=".NetworkActivity" />
+        <activity android:name=".activity.ImageIdentifyActivity" />
+        <activity android:name=".activity.DrawLineActivity" />
+        <activity android:name=".activity.CustomViewActivity" />
+        <activity android:name=".activity.NetworkActivity" />
 
         <!-- <receiver android:name=".BroadcaseReceiver.BootRestartReceiver"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
         <!-- </intent-filter> -->
         <!-- </receiver> -->
-        <activity android:name=".SDCardPathActivity" />
+        <activity android:name=".activity.SDCardPathActivity" />
         <activity android:name=".wifiscan.WifiScanActivity" />
         <activity
-            android:name=".VideoPlayActivity"
+            android:name=".activity.VideoViewPlayActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".AActivity"
+            android:name=".activity.AActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".BActivity"
+            android:name=".activity.BActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".CActivity"
+            android:name=".activity.CActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".ForiTimeTestActivity" />
-        <activity android:name=".NetResourceTestActivity" />
-        <activity android:name=".ThreadPoolTestActivity" />
-        <activity android:name=".IPGetActivity"></activity>
+        <activity android:name=".activity.ForiTimeTestActivity" />
+        <activity android:name=".activity.NetResourceTestActivity" />
+        <activity android:name=".activity.ThreadPoolTestActivity" />
+        <activity android:name=".activity.IPGetActivity" />
+        <activity android:name=".activity.VitamioVideoPlayActivity" />
+        <activity android:name=".CardViewActivity" />
+        <activity android:name=".activity.VRVideoActivity" />
+        <activity android:name=".HistogramViewActivity"></activity>
     </application>
 
 </manifest>

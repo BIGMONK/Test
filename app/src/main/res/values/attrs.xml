@@ -21,4 +21,10 @@
             <enum name="FILL" value="1"></enum>
         </attr>
     </declare-styleable>
+    <declare-styleable name="MyCircleProgressBar">
+        <attr name="cpb_strokeWidth" format="dimension" />
+        <attr name="cpb_startColor" format="color"/>
+        <attr name="cpb_endColor" format="color"/>
+        <attr name="cpb_duration" format="integer"/>
+    </declare-styleable>
 </resources>

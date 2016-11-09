@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.uto.djf.test.BaseActivity;
+import com.uto.djf.test.activity.BaseActivity;
 import com.uto.djf.test.R;
 
 import java.util.ArrayList;

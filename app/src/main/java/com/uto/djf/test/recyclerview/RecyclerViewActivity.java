@@ -1,6 +1,5 @@
 package com.uto.djf.test.recyclerview;
 
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,13 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.uto.djf.test.BaseActivity;
+import com.uto.djf.test.activity.BaseActivity;
 import com.uto.djf.test.R;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by djf on 2016/8/8.

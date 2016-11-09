@@ -15,20 +15,36 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btn_histogram_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="柱状图" />
+
+
+            <Button
                 android:id="@+id/btn_ip_get_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="IP获取" />
+
+            <Button
+                android:id="@+id/btn_cardview_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CardView容器" />
+
             <Button
                 android:id="@+id/btn_thread_pool_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="线程池测试" />
+
             <Button
                 android:id="@+id/btn_net_resource_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="网络资源测试" />
+
             <Button
                 android:id="@+id/btn_fori_time_cost_test"
                 android:layout_width="wrap_content"
@@ -45,7 +61,19 @@
                 android:id="@+id/btn_video_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="视频播放" />
+                android:text="VideoView视频播放" />
+
+            <Button
+                android:id="@+id/btn_vitamio_video_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vitamio视频播放" />
+
+            <Button
+                android:id="@+id/btn_vrvideo_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VRVideo视频播放" />
 
 
             <Button

@@ -2,7 +2,6 @@ package com.uto.djf.test;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -10,6 +9,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.uto.djf.test.activity.AActivity;
+import com.uto.djf.test.activity.BaseActivity;
+import com.uto.djf.test.activity.CustomViewActivity;
+import com.uto.djf.test.activity.DrawLineActivity;
+import com.uto.djf.test.activity.ExpandableListViewActivity;
+import com.uto.djf.test.activity.ForiTimeTestActivity;
+import com.uto.djf.test.activity.IPGetActivity;
+import com.uto.djf.test.activity.ImageIdentifyActivity;
+import com.uto.djf.test.activity.NetResourceTestActivity;
+import com.uto.djf.test.activity.NetworkActivity;
+import com.uto.djf.test.activity.SDCardPathActivity;
+import com.uto.djf.test.activity.ThreadPoolTestActivity;
+import com.uto.djf.test.activity.VRVideoActivity;
+import com.uto.djf.test.activity.VideoViewPlayActivity;
+import com.uto.djf.test.activity.VitamioVideoPlayActivity;
 import com.uto.djf.test.recyclerview.RecyclerViewActivity;
 import com.uto.djf.test.screenmesure.ScreenMesureActivity;
 import com.uto.djf.test.wifiscan.WifiScanActivity;
@@ -115,12 +129,21 @@ public class MainActivity extends BaseActivity {
             R.id.btn_draw_line, R.id.btn_circle_imageview, R.id.btn_download_asynctask,
             R.id.btn_getSDCardPath, R.id.btn_wifi_scan, R.id.btn_video_play,
             R.id.btn_activity_start, R.id.btn_fori_time_cost_test, R.id.btn_net_resource_test,
-            R.id.btn_thread_pool_test,R.id.btn_ip_get_test
+            R.id.btn_thread_pool_test, R.id.btn_ip_get_test, R.id.btn_vitamio_video_play,
+            R.id.btn_cardview_test,R.id.btn_vrvideo_play,R.id.btn_histogram_view
 
     })
     public void onClick(View view) {
         switch (view.getId()) {
 
+            //柱状图
+            case R.id.btn_histogram_view:
+                gotoActivity(HistogramViewActivity.class);
+                break;
+            //CardView容器
+            case R.id.btn_cardview_test:
+                gotoActivity(CardViewActivity.class);
+                break;
             //ip获取测试
             case R.id.btn_ip_get_test:
                 gotoActivity(IPGetActivity.class);
@@ -142,9 +165,17 @@ public class MainActivity extends BaseActivity {
                 gotoActivity(AActivity.class);
                 break;
 
-            //视频播放
+            //视频播放VideoView
             case R.id.btn_video_play:
-                gotoActivity(VideoPlayActivity.class);
+                gotoActivity(VideoViewPlayActivity.class);
+                break;
+            //视频播放Vitamio
+            case R.id.btn_vitamio_video_play:
+                gotoActivity(VitamioVideoPlayActivity.class);
+                break;
+            //视频播放VRVideo
+            case R.id.btn_vrvideo_play:
+                gotoActivity(VRVideoActivity.class);
                 break;
 
             //获取wifi列表

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.SweepGradient;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -70,6 +71,8 @@ public class RoundProgressBar extends View {
     private String text;
     private Rect mBound;
     private Paint textPaint;
+    private int roundProgressColorStart;
+    private int roundProgressColorEnd;
 
     public RoundProgressBar(Context context) {
         this(context, null);
@@ -114,29 +117,16 @@ public class RoundProgressBar extends View {
         /**
          * 画最外层的大圆环
          */
-        int centre = getWidth() / 2; //获取圆心的x坐标
-        int radius = (int) (centre - roundWidth / 2); //圆环的半径
+        int centreX = getMeasuredWidth() / 2; //获取圆心的x坐标
+        int centreY = getMeasuredHeight() / 2; //获取圆心的x坐标
+        int radius = (int) (centreX - roundWidth / 2); //圆环的半径
         paint.setColor(roundColor); //设置圆环的颜色
         paint.setStyle(Paint.Style.STROKE); //设置空心
         paint.setStrokeWidth(roundWidth); //设置圆环的宽度
         paint.setAntiAlias(true);  //消除锯齿
-        canvas.drawCircle(centre, centre, radius, paint); //画出圆环
+        canvas.drawCircle(centreX, centreY, radius, paint); //画出圆环
 
-        Log.e("log", centre + "");
-
-        /**
-         * 画进度百分比
-         */
-        paint.setStrokeWidth(0);
-        paint.setColor(textColor);
-        paint.setTextSize(textSize);
-        paint.setTypeface(Typeface.DEFAULT_BOLD); //设置字体
-//        int percent = (int) (((float) progress / (float) max) * 100);  //中间的进度百分比，先转换成float在进行除法运算，不然都为0
-//        float textWidth = paint.measureText(percent + "%");   //测量字体宽度，我们需要根据字体的宽度设置在圆环中间
-//
-//        if (textIsDisplayable && percent != 0 && style == STROKE) {
-//            canvas.drawText(percent + "%", centre - textWidth / 2, centre + textSize / 2, paint); //画出进度百分比
-//        }
+        Log.e("log", centreX + "");
 
         /**
          * 画圆弧 ，画圆环的进度
@@ -144,9 +134,12 @@ public class RoundProgressBar extends View {
 
         //设置进度是实心还是空心
         paint.setStrokeWidth(roundWidth); //设置圆环的宽度
+
         paint.setColor(roundProgressColor);  //设置进度的颜色
-        RectF oval = new RectF(centre - radius, centre - radius, centre
-                + radius, centre + radius);  //用于定义的圆弧的形状和大小的界限
+
+
+        RectF oval = new RectF(centreX - radius, centreY - radius, centreX
+                + radius, centreY + radius);  //用于定义的圆弧的形状和大小的界限
 
         switch (style) {
             case STROKE: {
@@ -168,7 +161,7 @@ public class RoundProgressBar extends View {
         textPaint.setColor(textColor);
         textPaint.setTextSize(textSize);
         float textWidth = textPaint.measureText(text);
-        canvas.drawText(text, centre - textWidth / 2, centre + textSize / 2, textPaint);
+        canvas.drawText(text, centreX - textWidth / 2, centreY + textSize / 2, textPaint);
 
 //        paint.getTextBounds(text, 0, text.length(), mBound);
 //        canvas.drawText(text, getWidth() / 2 - mBound.width() / 2, getHeight() / 2 + mBound.height() / 2, paint);
