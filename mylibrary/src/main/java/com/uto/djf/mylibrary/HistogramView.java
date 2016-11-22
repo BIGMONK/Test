@@ -1,4 +1,4 @@
-package com.uto.djf.test.view;
+package com.uto.djf.mylibrary;
 
 import android.content.Context;
 import android.graphics.Bitmap;

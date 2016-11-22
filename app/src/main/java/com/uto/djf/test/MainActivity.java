@@ -19,6 +19,7 @@ import com.uto.djf.test.activity.IPGetActivity;
 import com.uto.djf.test.activity.ImageIdentifyActivity;
 import com.uto.djf.test.activity.NetResourceTestActivity;
 import com.uto.djf.test.activity.NetworkActivity;
+import com.uto.djf.test.activity.PolymorphismTest;
 import com.uto.djf.test.activity.SDCardPathActivity;
 import com.uto.djf.test.activity.ThreadPoolTestActivity;
 import com.uto.djf.test.activity.VRVideoActivity;
@@ -130,12 +131,16 @@ public class MainActivity extends BaseActivity {
             R.id.btn_getSDCardPath, R.id.btn_wifi_scan, R.id.btn_video_play,
             R.id.btn_activity_start, R.id.btn_fori_time_cost_test, R.id.btn_net_resource_test,
             R.id.btn_thread_pool_test, R.id.btn_ip_get_test, R.id.btn_vitamio_video_play,
-            R.id.btn_cardview_test,R.id.btn_vrvideo_play,R.id.btn_histogram_view
+            R.id.btn_cardview_test,R.id.btn_vrvideo_play,R.id.btn_histogram_view,R.id.btn_polymorphism_test
 
     })
     public void onClick(View view) {
         switch (view.getId()) {
 
+            //柱状图
+            case R.id.btn_polymorphism_test:
+                gotoActivity(PolymorphismTest.class);
+                break;
             //柱状图
             case R.id.btn_histogram_view:
                 gotoActivity(HistogramViewActivity.class);

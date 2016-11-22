@@ -42,7 +42,9 @@ public class AActivity extends BaseActivity {
 
     @OnClick(R.id.btn_start_b)
     public void onClick() {
-        startActivity(new Intent(this,BActivity.class));
+        Intent intent=new Intent(this,BActivity.class);
+        intent.putExtra("obj",999);
+        startActivity(intent);
     }
     @Override
     protected void onStart() {

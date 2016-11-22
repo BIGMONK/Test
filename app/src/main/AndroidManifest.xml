@@ -72,7 +72,8 @@
         <activity android:name=".activity.VitamioVideoPlayActivity" />
         <activity android:name=".CardViewActivity" />
         <activity android:name=".activity.VRVideoActivity" />
-        <activity android:name=".HistogramViewActivity"></activity>
+        <activity android:name=".HistogramViewActivity" />
+        <activity android:name=".activity.PolymorphismTest"></activity>
     </application>
 
 </manifest>

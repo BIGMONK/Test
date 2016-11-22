@@ -22,21 +22,21 @@
             android:layout_width="50dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
-            android:background="#ee8833" />
+            android:background="@drawable/bg_calorie_lable" />
 
         <com.uto.djf.test.view.HistogramView
             android:id="@+id/hv3"
             android:layout_width="50dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/bg_map_line" />
+            android:background="#cccccc"/>
 
         <com.uto.djf.test.view.HistogramView
             android:id="@+id/hv4"
             android:layout_width="50dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
-            android:background="#ee8833" />
+            android:background="#21282f" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,14 +50,14 @@
             android:layout_width="50dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
-            android:background="#ee8833" />
+            android:background="#21282f" />
 
         <com.uto.djf.test.view.HistogramView
             android:id="@+id/hv6"
             android:layout_width="50dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
-            android:background="#ee8833" />
+            android:background="#21282f" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,4 +93,11 @@
                 android:background="#123456" />
         </FrameLayout>
     </LinearLayout>
+
+    <com.uto.djf.test.view.HistogramView
+        android:id="@+id/hv"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:background="#21282f" />
 </LinearLayout>

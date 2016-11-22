@@ -26,7 +26,6 @@ public class BActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-
     }
 
     @Override
@@ -45,7 +44,6 @@ public class BActivity extends BaseActivity {
         super.onStart();
         System.out.println("BActivity Start");
     }
-
 
 
     @OnClick(R.id.btn_start_c)

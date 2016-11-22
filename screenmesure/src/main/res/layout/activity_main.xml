@@ -1,19 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     tools:context="com.uto.djf.screenmesure.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_screen_width_and_heigh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="400px"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvScreenWidthAndHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!" />
+
+            <TextView
+                android:id="@+id/tvScreenWidthAndHeight2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_toRightOf="@id/ll1"
+        android:layout_width="108px"
+        android:layout_height="1080px"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#FF0000"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#00FF00"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#0000FF"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#FF0000"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#00FF00"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#0000FF"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#FF0000"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#00FF00"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#0000FF"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="108px"
+            android:background="#00FF00"/>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_screen_width_and_heigh2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/ll5"
+        android:layout_width="match_parent"
+        android:layout_height="108px"
+        android:text="长度1920px"
+        android:background="#CCCCCC"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:id="@+id/ll3"
+        android:layout_toRightOf="@id/ll2"
+        android:layout_width="108px"
+        android:layout_height="1080px"
+        android:background="#FF0000"
+        />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/ll4"
+        android:layout_toRightOf="@id/ll3"
+        android:layout_width="108px"
+        android:layout_height="match_parent"
+        android:text="高度"
+        android:background="#00FF00"/>
+
+</RelativeLayout>
