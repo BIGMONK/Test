@@ -15,6 +15,7 @@ import com.uto.djf.test.activity.CustomViewActivity;
 import com.uto.djf.test.activity.DrawLineActivity;
 import com.uto.djf.test.activity.ExpandableListViewActivity;
 import com.uto.djf.test.activity.ForiTimeTestActivity;
+import com.uto.djf.test.activity.H5Activity;
 import com.uto.djf.test.activity.IPGetActivity;
 import com.uto.djf.test.activity.ImageIdentifyActivity;
 import com.uto.djf.test.activity.NetResourceTestActivity;
@@ -131,13 +132,18 @@ public class MainActivity extends BaseActivity {
             R.id.btn_getSDCardPath, R.id.btn_wifi_scan, R.id.btn_video_play,
             R.id.btn_activity_start, R.id.btn_fori_time_cost_test, R.id.btn_net_resource_test,
             R.id.btn_thread_pool_test, R.id.btn_ip_get_test, R.id.btn_vitamio_video_play,
-            R.id.btn_cardview_test,R.id.btn_vrvideo_play,R.id.btn_histogram_view,R.id.btn_polymorphism_test
+            R.id.btn_cardview_test,R.id.btn_vrvideo_play,R.id.btn_histogram_view,
+            R.id.btn_polymorphism_test,R.id.btn_h5_test
 
     })
     public void onClick(View view) {
         switch (view.getId()) {
 
-            //柱状图
+            //h5测试
+            case R.id.btn_h5_test:
+                gotoActivity(H5Activity.class);
+                break;
+            //多态
             case R.id.btn_polymorphism_test:
                 gotoActivity(PolymorphismTest.class);
                 break;

@@ -73,7 +73,8 @@
         <activity android:name=".CardViewActivity" />
         <activity android:name=".activity.VRVideoActivity" />
         <activity android:name=".HistogramViewActivity" />
-        <activity android:name=".activity.PolymorphismTest"></activity>
+        <activity android:name=".activity.PolymorphismTest" />
+        <activity android:name=".activity.H5Activity"></activity>
     </application>
 
 </manifest>
