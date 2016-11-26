@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:panel="http://schemas.android.com/apk/com.uto.djf.customview"
     android:id="@+id/activity_circle_image_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +12,7 @@
         android:layout_height="200px"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_map_line"
-        custom:Round="200" />
+        custom:Round="100" />
 
     <com.uto.djf.test.view.MiniMapView
         android:id="@+id/minimapview"
@@ -23,21 +24,23 @@
 
     <com.uto.djf.test.view.RoundProgressBar
         android:id="@+id/roundpeogressbar"
-        android:layout_width="600px"
-        android:layout_height="620px"
+        android:layout_width="200px"
+        android:layout_height="200px"
         android:background="#55cc0000"
         custom:roundColor="#550055ff"
         custom:roundProgressColor="@android:color/holo_green_dark"
-        custom:roundWidth="30px"
+        custom:roundWidth="20px"
         custom:textColor="#9A32CD"
         custom:textIsDisplayable="true"
         custom:textSize="100px" />
 
+    <com.uto.djf.test.view.ImageViewWithBorder
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:scaleType="centerCrop"
+        custom:imageview_borderColor="#ff0000"
+        custom:imageview_borderCorner="10px"
+        custom:imageview_borderWidth="5px"
+        android:src="@drawable/bg_map_line"/>
 
-    <!--android_custom:roundColor="#D1D1D1"-->
-    <!--android_custom:roundProgressColor="@android:color/black"-->
-    <!--android_custom:textColor="#9A32CD"-->
-    <!--android_custom:textIsDisplayable="false"-->
-    <!--android_custom:roundWidth="10dip"-->
-    <!--android_custom:textSize="18sp"-->
 </LinearLayout>
