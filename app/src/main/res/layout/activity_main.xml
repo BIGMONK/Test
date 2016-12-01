@@ -178,12 +178,14 @@
                 android:id="@+id/textview2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="字体"
                 android:textSize="30px" />
 
-            <TextView
+            <com.uto.djf.test.view.CustomTextView
                 android:id="@+id/textview3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="自定义字体TextView"
                 android:textSize="30px" />
 
             <TextView

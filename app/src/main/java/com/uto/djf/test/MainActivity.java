@@ -2,6 +2,7 @@ package com.uto.djf.test;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -28,6 +29,7 @@ import com.uto.djf.test.activity.VideoViewPlayActivity;
 import com.uto.djf.test.activity.VitamioVideoPlayActivity;
 import com.uto.djf.test.recyclerview.RecyclerViewActivity;
 import com.uto.djf.test.screenmesure.ScreenMesureActivity;
+import com.uto.djf.test.view.CustomTextView;
 import com.uto.djf.test.wifiscan.WifiScanActivity;
 
 import butterknife.BindView;
@@ -52,7 +54,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.textview2)
     TextView textview2;
     @BindView(R.id.textview3)
-    TextView textview3;
+    CustomTextView textview3;
     @BindView(R.id.textview4)
     TextView textview4;
     @BindView(R.id.editText)
@@ -99,13 +101,13 @@ public class MainActivity extends BaseActivity {
 //        textview.setText(objects.get(0).getPageHeader().getName());
 
 //
-//        Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/xiyuan.ttf");
-//        textview2.setTypeface(fontFace);
-//        textview2.setText("细圆字体");
+        Typeface fontFace = Typeface.createFromAsset(getAssets(), "fonts/maozedong.ttf");
+        textview2.setTypeface(fontFace);
+//        textview2.setText("毛泽东字体");
 //
-//        Typeface fontFace2 = Typeface.createFromAsset(getAssets(), "fonts/maozedong.ttf");
+//        Typeface fontFace2 = Typeface.createFromAsset(getAssets(), "fonts/xiyuan.ttf");
 //        textview3.setTypeface(fontFace2);
-//        textview3.setText("毛泽东字体");
+//        textview3.setText("细圆字体");
 //        editText.setTypeface(fontFace2);
 //
 //        Typeface fontFace3 = Typeface.createFromAsset(getAssets(), "fonts/youjiyetaikaishu.ttf");
