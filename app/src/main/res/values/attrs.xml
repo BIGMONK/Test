@@ -32,4 +32,8 @@
         <attr name="imageview_borderWidth" format="dimension"/>
         <attr name="imageview_borderCorner" format="dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="PowerImageView">
+        <attr name="auto_play" format="boolean"></attr>
+    </declare-styleable>
 </resources>

@@ -2,6 +2,7 @@ package com.uto.djf.test.activity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,10 +17,11 @@ import butterknife.ButterKnife;
  * Created by djf on 2016/8/4.
  */
 public abstract class BaseActivity extends AutoLayoutActivity {
+    String TAG = this.getClass().getName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.d(TAG,TAG+"     onCreate");
         //隐藏NavigationBar
         hideNavigationBar();
         this.setContentView(getLayoutId());
